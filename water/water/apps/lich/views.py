@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Lich, Pokaz, Menu_item
+from .models import Menu_item
 
 
 def index(request):
