@@ -10,10 +10,9 @@ img {
 #header {
     background-image: linear-gradient(rgb(121, 220, 233) 40%, rgb(255, 218, 116));
     padding: 10px;
-    overflow: auto;
-  }
+}
 
-#main:after {
+#main:after, #header:after {
     content: "";
     clear: both;
     display: table;

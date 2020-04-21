@@ -14,8 +14,8 @@ def huy(request):
 
 
 def one_lich(request, lich_id):
-    one_lich = Lich.objects.get(kod=lich_id)
-    return render(request, 'lichs.html', {'main_menu': menu_list, 'lichs': {one_lich}})
+    one_lich_ = Lich.objects.get(kod=lich_id)
+    return render(request, 'lichs.html', {'main_menu': menu_list, 'lichs': {one_lich_}})
 
 
 def kotels(request):
