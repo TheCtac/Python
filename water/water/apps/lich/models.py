@@ -88,7 +88,7 @@ class Pokaz(models.Model):
 class Menu_item(models.Model):
     menu_id = models.IntegerField('Код меню', primary_key=True)
     menu_name = models.CharField('Назва', max_length=30)
-    to_url = models.CharField('Шлях', max_length=50, blank = True)
+    url_link = models.CharField('Шлях', max_length=50, blank = True)
     parent_id = models.IntegerField('Головне меню')
 
     class Meta:

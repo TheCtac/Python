@@ -8,18 +8,21 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Головна сторінка</title>
-    <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
+    <title> {% block title %} Головна сторінка {% endblock%} </title>
+    <script src="{% static 'jquery.js' %}"></script> 
   </head>
   <body>
     <div id='header'>
+      <a href = " {% url 'index' %} "> <img src="{% static 'images/lt.png' %}" alt="Hi!"> </a>
       <h1>WATER</h1>
       <h2>ви на головній сторінці</h2>
     </div>
     <div id='main'>
           {% include "menu.html" %} 
 
-          {% block content %} some content {% endblock %}
+          <div class='col-10' id='content'>
+              {% block content %} some content {% endblock %}
+          </div>    
     </div>
     <div id='footer'>
         <p>Дзвоніть - пишіть</p>

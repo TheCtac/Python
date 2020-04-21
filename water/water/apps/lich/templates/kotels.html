@@ -1,9 +1,8 @@
 {% extends "index.html" %}
 
+{% block title %} Котельні {% endblock %}
 {% block content %}
-    <div class='col-10 content'>
-        {% for value in kotels.values %}
-            {{ key }} {{ value }}
+        {% for kotel in kotels %}
+            {{kotel }}
         {% endfor %}    
-    </div>
 {% endblock %}    

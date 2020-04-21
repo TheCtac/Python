@@ -1,19 +1,27 @@
-    <div class='col-2 menu_div'>
-      {% if main_menu %}
-          <ul>
-          {% for menu_item in main_menu %}
-            {% if menu_item.menu_id == menu_item.parent_id %}
-              <li class='parent-menu'>
-                  {{ menu_item.menu_name }}
-              </li>
-            {% else %}
-              <li class='child-menu'>
-                {{ menu_item.menu_name }}
-              </li>
-            {% endif %}  
-          {% endfor %}
-          </ul>
-      {% else %}
-          <p>No menu yet</p>
-      {% endif %}
-    </div>
+<div class='col-2 menu_div'>
+  {% if main_menu %}
+      <ul>
+      {% for menu_item in main_menu %}
+        {% if menu_item.menu_id == menu_item.parent_id %}
+          <div class='parent-menu'> 
+            <div> {{ menu_item.menu_name }} </div>
+            {% for child_item in main_menu %}
+              {% if child_item.parent_id == menu_item.menu_id and child_item.parent_id != child_item.menu_id %}
+                {% if menu_item.url_link == '' %}
+                  <a href=" {% url 'index' %} ">
+                {% else %}
+                  <a href=" {% url menu_item.url_link %} ">
+                {% endif %} 
+                    <li class='child-menu'> {{ child_item.menu_name }} </li>
+                </a>
+              {% endif %}  
+            {% endfor %}
+ 
+          </div>    
+        {% endif %}    
+      {% endfor %}
+      </ul>
+  {% else %}
+      <p>No menu yet</p>
+  {% endif %}
+</div>
