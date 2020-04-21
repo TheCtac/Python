@@ -1,0 +1,19 @@
+    <div class='col-2 menu_div'>
+      {% if main_menu %}
+          <ul>
+          {% for menu_item in main_menu %}
+            {% if menu_item.menu_id == menu_item.parent_id %}
+              <li class='parent-menu'>
+                  {{ menu_item.menu_name }}
+              </li>
+            {% else %}
+              <li class='child-menu'>
+                {{ menu_item.menu_name }}
+              </li>
+            {% endif %}  
+          {% endfor %}
+          </ul>
+      {% else %}
+          <p>No menu yet</p>
+      {% endif %}
+    </div>
