@@ -6,14 +6,20 @@
 img {
   float: left;
 }  
+fas {
+  transition: 0.5s;
+}
+
+.flip {
+  transform: rotate(180deg);
+}  
 
 #header {
     background-image: linear-gradient(rgb(121, 220, 233) 40%, rgb(255, 218, 116));
     padding: 10px;
-    overflow: auto;
-  }
+}
 
-#main:after {
+#main:after, #header:after {
     content: "";
     clear: both;
     display: table;
@@ -40,7 +46,7 @@ img {
 }
 
 #content {
-  background-color: rgb(138, 138, 138);
+  padding: 10px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
@@ -58,8 +64,8 @@ img {
     margin-top: 4px;
     background-color :rgb(255, 218, 116);
     box-shadow: 0px 2px 3px rgb(121, 220, 233);
-  }
-    
+    cursor: pointer;
+  }  
   .parent-menu:hover, .child-menu:hover {
     background-color: rgb(121, 220, 233);
     color: rgb(21, 35, 37);
@@ -74,7 +80,7 @@ img {
     display: none;
     padding: 5px;
     padding-left: 17px;
-    margin-bottom: 0px;
+    margin-top: 2px;
     background-color: rgb(121, 233, 190);
   }
   
