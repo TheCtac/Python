@@ -1,6 +1,7 @@
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<script src="{% static 'jquery.js' %}"></script>
 <script src="{% static 'scripts.js' %}"></script>
 
 <!DOCTYPE html>
@@ -8,37 +9,21 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Головна сторінка</title>
-    <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <title> {% block title %} Головна сторінка {% endblock%} </title>
   </head>
   <body>
     <div id='header'>
+      <a href = " {% url 'index' %} "> <img src="{% static 'images/lt.png' %}" alt="Hi!"> </a>
       <h1>WATER</h1>
       <h2>ви на головній сторінці</h2>
     </div>
     <div id='main'>
-      <div class='col-2 menu_div'>
-        {% if main_menu %}
-            <ul>
-            {% for menu_item in main_menu %}
-              {% if menu_item.menu_id == menu_item.parent_id %}
-                <li class='perant-menu'>
-                    {{ menu_item.menu_name }}
-                </li>
-              {% else %}
-                <li class='child-menu'>
-                  {{ menu_item.menu_name }}
-                </li>
-              {% endif %}  
-            {% endfor %}
-            </ul>
-        {% else %}
-            <p>No menu yet</p>
-        {% endif %}
-      </div>
-      <div class='col-10 content'>
-        <p>SOME shit </p>
-      </div>
+          {% include "menu.html" %} 
+
+          <div class='col-10' id='content'>
+              {% block content %} some content {% endblock %}
+          </div>    
     </div>
     <div id='footer'>
         <p>Дзвоніть - пишіть</p>
