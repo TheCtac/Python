@@ -6,6 +6,13 @@
 img {
   float: left;
 }  
+fas {
+  transition: 0.5s;
+}
+
+.flip {
+  transform: rotate(180deg);
+}  
 
 #header {
     background-image: linear-gradient(rgb(121, 220, 233) 40%, rgb(255, 218, 116));
@@ -57,6 +64,7 @@ img {
     margin-top: 4px;
     background-color :rgb(255, 218, 116);
     box-shadow: 0px 2px 3px rgb(121, 220, 233);
+    cursor: pointer;
   }  
   .parent-menu:hover, .child-menu:hover {
     background-color: rgb(121, 220, 233);
@@ -71,7 +79,7 @@ img {
     display: none;
     padding: 7px;
     padding-left: 17px;
-    margin-bottom: 0px;
+    margin-top: 2px;
     background-color: rgb(121, 233, 190);
   }
   

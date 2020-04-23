@@ -1,2 +1,8 @@
+$(document).ready(function(){
 
-      //alert('hello');
+      $(".parent-menu").click(function(){
+          lis = this.querySelectorAll('.child-menu')
+          $(lis).slideToggle();
+          $(this.querySelectorAll('fas')).toggleClass('flip');
+      });
+});
