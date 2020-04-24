@@ -35,7 +35,7 @@ class Kotel(models.Model):
     kot_adr = models.CharField('Адреса', max_length=40)
     kot_t_r = models.IntegerField('Тепл.район')
     def __str__(self):
-        return self.kot_adr
+        return str(self.kot_kod) +'.'+ self.kot_adr
     class Meta:
         verbose_name = "Котельня"
         verbose_name_plural = "Котельні"

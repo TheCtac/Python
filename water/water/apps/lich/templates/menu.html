@@ -4,7 +4,14 @@
       {% for menu_item in main_menu %}
         {% if menu_item.menu_id == menu_item.parent_id %}
           <div class='parent-menu'> 
-            <div class='open-menu'> <fas class='fas fa-arrow-circle-down'></fas> {{ menu_item.menu_name }} </div> 
+            {% if menu_item.url_link == '' %}
+              <div class='open-menu'> <fas class='fas fa-arrow-circle-down'></fas> {{ menu_item.menu_name }} </div> 
+            {% else %}
+              <a href=" {% url menu_item.url_link %} ">
+                <div class='open-menu'> <fas class='fas fa-arrow-circle-down'></fas> {{ menu_item.menu_name }} </div> 
+              </a>
+            {% endif %}
+
             {% for child_item in main_menu %}
               {% if child_item.parent_id == menu_item.menu_id and child_item.parent_id != child_item.menu_id %}
                 {% if child_item.url_link == '' %}
@@ -13,9 +20,10 @@
                   <a href=" {% url child_item.url_link %} ">
                 {% endif %} 
                     <li class='child-menu'> <fas class='far fa-arrow-alt-circle-left'></fas> {{ child_item.menu_name }} </li>
-                </a>
+                  </a>
               {% endif %}  
             {% endfor %}
+          
           </div>    
         {% endif %}    
       {% endfor %}
