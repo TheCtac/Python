@@ -99,3 +99,44 @@ a, a:visited {
     font-size: 12px;
     padding: 15px;
 }
+
+table, th, td {
+  border: 1px solid rgb(43, 75, 80);
+  border-collapse: collapse;
+  padding: 5px;
+  text-align: left;
+  font-size: 12px;
+  min-width: 50%;
+}
+
+table tr:nth-child(even) {
+  background-color: rgb(208, 249, 255);
+}
+table tr:nth-child(odd) {
+   background-color: #fff;
+}
+table th {
+  background-color: rgb(121, 220, 233);
+  color: rgb(43, 75, 80);
+  text-align: center;
+}
+
+table tr:hover {
+  background-color: rgb(255, 218, 116);
+  color: rgb(43, 75, 80);
+  transition: 0.3s;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #content, #content * {
+    visibility: visible;
+  }
+  #content {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}

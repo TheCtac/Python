@@ -2,7 +2,21 @@
 
 {% block title %} Лічильники {% endblock %}
 {% block content %}
-    {% for lich in lichs %}
-      <div> {{ lich }} {{ lich.kotel }} </div>
-    {% endfor %}    
+<table>
+  <tr> 
+    <th>№</th>
+    <th>адреса</th>
+    <th>т/р</th>  
+  </tr>    
+  
+  {% for lich in lichs %}
+    <tr>
+      <td>{{ lich }}</td>
+      <td>{{ lich.kotel }}</td>
+      <td>+</td>
+    </tr>  
+  {% endfor %}    
+  
+</table>
+
 {% endblock %}    

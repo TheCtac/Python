@@ -2,7 +2,22 @@
 
 {% block title %} Котельні {% endblock %}
 {% block content %}
-        {% for kotel in kotels %}
-            {{kotel}}<br>
-        {% endfor %}    
+        
+  <table>
+    <tr> 
+      <th>№</th>
+      <th>адреса</th>
+      <th>т/р</th>  
+    </tr>    
+    
+    {% for kotel in kotels %}
+      <tr>
+        <td>{{kotel.kot_kod}}</td>
+        <td>{{kotel.kot_adr}}</td>
+        <td>{{kotel.kot_t_r}}</td>
+      </tr>  
+    {% endfor %}    
+    
+  </table>
+  
 {% endblock %}    
