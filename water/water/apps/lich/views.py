@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404
 from django.http import HttpResponse
 
-from .models import Menu_item, Kotel, Lich
+from .models import Menu_item, Kotel, Lich, Boiler, Typel, Diln
 from .imports import ModelImport
 
 menu_list = Menu_item.objects.all().order_by('parent_id', 'menu_id')
@@ -12,20 +12,31 @@ def index(request):
 
 def imp_water(request):
 
-    return HttpResponse("Ahtung!")
+    #return HttpResponse("Ahtung!")
     new_import = ModelImport()
-    new_import.kotel_add()
+    new_import.diln_add()
     new_import.close()
     
-    kotels_ = Kotel.objects.all().order_by('kot_kod')
-    return render(request, 'kotels.html', {'main_menu': menu_list, 'kotels': kotels_})
+    boilers_ = get_list_or_404(Boiler)
+    return render(request, 'kotels.html', {'main_menu': menu_list, 'kotels': boilers_})
 
 
 def kotels(request):
     kotels_ = Kotel.objects.all().order_by('kot_kod')
     return render(request, 'kotels.html', {'main_menu': menu_list, 'kotels': kotels_})
 
+def boilers(request):
+    boilers_ = get_list_or_404(Boiler)
+    return render(request, 'kotels.html', {'main_menu': menu_list, 'kotels': boilers_})
 
 def lichs(request):
     lichs_ = Lich.objects.all().order_by('kod')
     return render(request, 'lichs.html', {'main_menu': menu_list, 'lichs': lichs_})
+
+def lich_type(request):
+    types_ = Typel.objects.all()
+    return render(request, 'lichs.html', {'main_menu': menu_list, 'lichs': types_})
+
+def diln(request):
+    types_ = Diln.objects.all()
+    return render(request, 'lichs.html', {'main_menu': menu_list, 'lichs': types_})

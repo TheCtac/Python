@@ -35,7 +35,7 @@ class Kotel(models.Model):
     kot_adr = models.CharField('Адреса', max_length=40)
     kot_t_r = models.IntegerField('Тепл.район')
     def __str__(self):
-        return str(self.kot_kod) +'.'+ self.kot_adr
+        return self.kot_adr
     class Meta:
         verbose_name = "Котельня"
         verbose_name_plural = "Котельні"
@@ -43,6 +43,7 @@ class Kotel(models.Model):
 class Boiler(models.Model):            
     blr_kod = models.IntegerField('Номер', primary_key=True)
     blr_name = models.CharField('Адреса', max_length=40)
+    kotel = models.ForeignKey(Kotel, on_delete=models.CASCADE, verbose_name='Котельня')
     def __str__(self):
         return self.blr_name
     class Meta:
@@ -53,6 +54,7 @@ class Diln(models.Model):
     diln_kod = models.IntegerField('Номер', primary_key=True)
     diln_name = models.CharField('Адреса', max_length=40)
     phone = models.CharField('Телефон', max_length=10, blank = True)
+    master = models.CharField('Майстер', max_length=30, blank = True)
     def __str__(self):
         return self.diln_name
     class Meta:
@@ -60,6 +62,8 @@ class Diln(models.Model):
         verbose_name_plural = "Дільниці"
 
 class Lich(models.Model):
+    date_open = models.DateField('Початкова дата')
+    date_close = models.DateField('Кінцева дата', blank = True)
     kod = models.IntegerField('Код ліч', primary_key=True)
     numb = models.CharField('Номер ліч', max_length=20)
     typel = models.ForeignKey(Typel, on_delete=models.PROTECT, verbose_name='Тип ліч')

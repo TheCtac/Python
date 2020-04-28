@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
 
-from .models import Kotel
+from .models import Kotel, Boiler, Typel, Diln
 
 class ModelImport:
     def __init__(self):
@@ -25,6 +25,39 @@ class ModelImport:
             
         return self.lines
 
+    def boiler_add(self):
+        for line in self.lines:
+            values = line.split('|')
+            kotel_ = Kotel.objects.get(pk=int(values[3]))
+            new_boiler = Boiler(blr_kod=int(values[0]), blr_name=values[1], kotel=kotel_)
+            new_boiler.save()
+            print(line + '- OK')
+            
+        return self.lines
+
+    def lich_type_add(self):
+        for line in self.lines:
+            values = line.split('|')
+            new_type = Typel(type_kod=int(values[0]), 
+                             type_name=values[1], 
+                             diam=int(values[3]), 
+                             koef=float(values[4]))
+            new_type.save()
+            print(line + '- OK')
+            
+        return self.lines
+        
+    def diln_add(self):
+        for line in self.lines:
+            values = line.split('|')
+            new_diln = Diln(diln_kod=int(values[0]), 
+                            diln_name=values[1], 
+                            phone='', 
+                            master=values[2])
+            new_diln.save()
+            print(line + '- OK')
+            
+        return self.lines
     def close(self):
         self.file_.close()
         return
