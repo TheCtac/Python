@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+
+{% block title %} Покази лічильників {% endblock %}
+{% block content %}
+<table>
+  <tr> 
+    <th>дата</th>
+    <th>лічильник</th>
+    <th>котельня</th>  
+    <th>показ кінц.</th>  
+  </tr>    
+  
+  {% for counter_val in counter_vals %}
+    <tr>
+      <td>{{ counter_val.date|date:'d.m.Y' }}</td>
+      <td>{{ counter_val.kod_lich }}</td>
+      <td>{{ counter_val.kod_lich.kotel }}</td>
+      <td>{{ counter_val.value }}</td>
+    </tr>  
+  {% endfor %}    
+  
+</table>
+
+{% endblock %}    

@@ -10,4 +10,6 @@ urlpatterns = [
     path('lichs', views.lichs, name='lichs'),
     path('lich_type', views.lich_type, name='lich_type'),
     path('water_import', views.imp_water, name='imp_water'),
+    path('counter_val', views.counter_val, name='counter_val'),
+
 ]

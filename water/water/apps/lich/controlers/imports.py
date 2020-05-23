@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
 
-from .models import Kotel, Boiler, Typel, Diln
+from lich.models import Kotel, Boiler, Typel, Diln
 
 class ModelImport:
     def __init__(self):

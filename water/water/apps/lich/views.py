@@ -2,7 +2,8 @@ from django.shortcuts import render, get_list_or_404
 from django.http import HttpResponse
 
 from .models import Menu_item, Kotel, Lich, Boiler, Typel, Diln
-from .imports import ModelImport
+from .controlers.imports import ModelImport
+from .controlers.consumption import Consumption
 
 menu_list = Menu_item.objects.all().order_by('parent_id', 'menu_id')
 
@@ -14,7 +15,7 @@ def imp_water(request):
 
     #return HttpResponse("Ahtung!")
     new_import = ModelImport()
-    new_import.diln_add()
+    new_import.lich_add()
     new_import.close()
     
     boilers_ = get_list_or_404(Boiler)
@@ -40,3 +41,9 @@ def lich_type(request):
 def diln(request):
     types_ = Diln.objects.all()
     return render(request, 'lichs.html', {'main_menu': menu_list, 'lichs': types_})
+
+def counter_val(request):
+    consum = Consumption()
+    counter_vals = consum.get_counter_val()
+    return render(request, 'counter_val.html', {'main_menu': menu_list, 'counter_vals': counter_vals})
+
