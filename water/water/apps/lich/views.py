@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_list_or_404
 from django.http import HttpResponse
 
+from .controlers.imports import ModelImport
 from .models import Menu_item, Kotel, Lich, Boiler, Typel, Diln
-from .imports import ModelImport
 
 menu_list = Menu_item.objects.all().order_by('parent_id', 'menu_id')
 
