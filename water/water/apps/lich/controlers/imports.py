@@ -1,7 +1,8 @@
 import tkinter as tk
 from tkinter import filedialog
+from datetime import datetime
 
-from .models import Kotel, Boiler, Typel, Diln
+from lich.models import Kotel, Boiler, Typel, Diln, Lich, Place, Kms
 
 class ModelImport:
     def __init__(self):
@@ -13,7 +14,29 @@ class ModelImport:
 
     def lich_add(self):
         for line in self.lines:
-            print(line)
+            values = line.split('|')
+            typel_ = Typel.objects.get(pk=int(values[2]))
+            kms_ = Kms.objects.get(pk=int(values[3]))
+            place_ = Place.objects.get(pk=int(values[4]))
+            kotel_ = Kotel.objects.get(pk=int(values[5]))
+            boiler_ = Boiler.objects.get(pk=int(values[6]))
+            diln_ = Diln.objects.get(pk=int(values[7]))
+            date_ = datetime.strptime(values[8], '%d.%m.%Y')
+
+            new_lich = Lich(
+                date_open='2020-04-01',
+                kod=int(values[0]),
+                numb=values[1],
+                typel=typel_,
+                kms=kms_,
+                place=place_,
+                kotel=kotel_,
+                boiler=boiler_,
+                diln=diln_,
+                date_pov=date_
+            )
+            new_lich.save()
+            print(line + '- OK')
         return self.lines
 
     def kotel_add(self):

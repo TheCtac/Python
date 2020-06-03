@@ -4,16 +4,34 @@
 {% block content %}
 <table>
   <tr> 
-    <th>№</th>
-    <th>адреса</th>
-    <th>т/р</th>  
+    <th>Код</th>
+    <th>Поч.дата</th>
+    <th>Дата закриття</th>
+    <th>№ лічильника</th>
+    <th>Тип ліч.</th>  
+    <th>Місце встан.</th>
+    <th>Тип об'єкта</th>
+    <th>Котельня</th>
+    <th>ЦТП</th>
+    <th>Дільниця</th>
+    <th>Дата госп.пов</th>
+    <th></th>
   </tr>    
-  
+
   {% for lich in lichs %}
     <tr>
-      <td>{{ lich }}</td>
+      <td>{{ lich.kod }}</td>
+      <td>{{ lich.date_open|date:"d.m.Y" }}</td>
+      <td>{{ lich.date_close|date:"d.m.Y" }}</td>
+      <td>{{ lich.numb }}</td>
+      <td>{{ lich.typel }}</td>
+      <td>{{ lich.kms }}</td>
+      <td>{{ lich.place }}</td>
       <td>{{ lich.kotel }}</td>
-      <td>+</td>
+      <td>{{ lich.boiler }}</td>
+      <td>{{ lich.diln }}</td>
+      <td>{{ lich.date_pov|date:"d.m.Y" }}</td>
+      <td><a href='/admin/lich/lich/{{lich.kod}}/change/' target="blank"><fas class='far fa-edit'></fas></a></td>
     </tr>  
   {% endfor %}    
   

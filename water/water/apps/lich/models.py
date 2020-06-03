@@ -63,14 +63,15 @@ class Diln(models.Model):
 
 class Lich(models.Model):
     date_open = models.DateField('Початкова дата')
-    date_close = models.DateField('Кінцева дата', blank = True)
+    date_close = models.DateField('Кінцева дата', blank=True, null=True)
     kod = models.IntegerField('Код ліч', primary_key=True)
     numb = models.CharField('Номер ліч', max_length=20)
     typel = models.ForeignKey(Typel, on_delete=models.PROTECT, verbose_name='Тип ліч')
     kms = models.ForeignKey(Kms, on_delete=models.PROTECT, verbose_name='Місце встан')
     place = models.ForeignKey(Place, on_delete=models.PROTECT, verbose_name='Тип об\'єкта')
     kotel = models.ForeignKey(Kotel, on_delete=models.PROTECT, verbose_name='Котельня')
-    boiler = models.ForeignKey(Boiler, on_delete=models.PROTECT, verbose_name='Бойлерна', blank = True)
+    boiler = models.ForeignKey(Boiler, on_delete=models.PROTECT,
+                               verbose_name='Бойлерна', blank=True, null=True)
     diln = models.ForeignKey(Diln, on_delete=models.PROTECT, verbose_name='Дільниця')
     date_pov = models.DateField('Дата повірки')
     def __str__(self):
@@ -84,7 +85,7 @@ class Pokaz(models.Model):
     kod_lich = models.ForeignKey(Lich, on_delete=models.PROTECT, verbose_name='Код ліч')
     value = models.FloatField('Показ')
     def __str__(self):
-        return str(self.kod_lich) + ' - ' + str(self.date) 
+        return str(self.kod_lich) + ' . ' + str(self.date) + ' - ' + str(self.value)  
     class Meta:
         verbose_name = "Показ"
         verbose_name_plural = "Покази"

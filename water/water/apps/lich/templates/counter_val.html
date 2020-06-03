@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block title %} Покази лічильників {% endblock %}
+{% block content %}
+<table>
+  <tr> 
+    <th>Код</th>
+    <th>№ лічильника</th>
+    <th>Тип ліч.</th>  
+    <th>Місце встан.</th>
+    <th>Тип об'єкта</th>
+    <th>Котельня</th>
+    <th>Показ поч</th>
+    <th>Показ кінц</th>  
+  </tr>    
+  
+  {% for counter_val in counter_vals %}
+    <tr>
+      <td>{{ counter_val.kod }}</td>
+      <td>{{ counter_val.number }}</td>
+      <td>{{ counter_val.type }}</td>
+      <td>{{ counter_val.kms }}</td>
+      <td>{{ counter_val.place }}</td>
+      <td>{{ counter_val.kotel }}</td>
+      <td>{{ counter_val.pokaz_b }}</td>
+      <td>{{ counter_val.pokaz_e }}</td>
+    </tr>   
+  {% endfor %}    
+  
+</table>
+
+{% endblock %}    
