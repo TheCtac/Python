@@ -1,4 +1,5 @@
 {% extends "index.html" %}
+{% load lich_tags_filters %}
 
 {% block title %} Покази лічильників {% endblock %}
 {% block content %}
@@ -12,6 +13,8 @@
     <th>Котельня</th>
     <th>Показ поч</th>
     <th>Показ кінц</th>  
+    <th>Донараховано</th>  
+    <th>Спожито</th>  
   </tr>    
   
   {% for counter_val in counter_vals %}
@@ -24,6 +27,8 @@
       <td>{{ counter_val.kotel }}</td>
       <td>{{ counter_val.pokaz_b }}</td>
       <td>{{ counter_val.pokaz_e }}</td>
+      <td>{{ counter_val.donarah }}</td>
+      <td>{{ counter_val.pokaz_e|sub:counter_val.pokaz_b|add:counter_val.donarah }}</td>
     </tr>   
   {% endfor %}    
   

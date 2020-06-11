@@ -16,7 +16,7 @@ class Kms(models.Model):
     kms_name = models.CharField('Місце встан', max_length=20)
     kms_name_full = models.CharField('Ремарка', max_length=40, blank = True)
     def __str__(self):
-        return self.kms_name_full
+        return self.kms_name
     class Meta:
         verbose_name = "Місця встановлення"
         verbose_name_plural = "Місця встановлення"
